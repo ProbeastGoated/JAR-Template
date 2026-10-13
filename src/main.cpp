@@ -215,11 +215,11 @@ void clawMove() {
 
     const double tolerance = 5.0;
 
-    if (fabs(currentPos - 100.0) <= tolerance) {
+    if (fabs(currentPos - 90.0) <= tolerance) {
         claw_wrist.spinToPosition(0, degrees, false); 
     }
     else if (fabs(currentPos - 0.0) <= tolerance) {
-        claw_wrist.spinToPosition(100, degrees, false);
+        claw_wrist.spinToPosition(90, degrees, false);
     }
 }
 
