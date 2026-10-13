@@ -1,0 +1,18 @@
+{
+	"project": {
+		"name": "Nics_controls_1st_program",
+		"slot": 1,
+		"description": "My first program of VEX C++ and these are Nic's controls",
+		"platform": "V5",
+		"creationDate": "Sat, 10 Oct 2026 04:14:14 GMT",
+		"language": "cpp",
+		"sdkVersion": "V5_20240802_15_00_00",
+		"cpp": {
+			"includePath": []
+		}
+	},
+	"extension": {
+		"version": "0.8.2026020401",
+		"json": 1
+	}
+}
