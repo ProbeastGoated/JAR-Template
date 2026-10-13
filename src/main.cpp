@@ -274,9 +274,9 @@ void usercontrol(void) { // dont need void in parameter
     }
 
     if (Controller1.ButtonUp.pressing()) {
-      toggle_mech.spin(reverse);
+      toggle_mech.spin(forward);
     } else if (Controller1.ButtonLeft.pressing()) {
-      toggle_mech.spin(forward); 
+      toggle_mech.spin(reverse); 
     } else {
       toggle_mech.stop();
     }
