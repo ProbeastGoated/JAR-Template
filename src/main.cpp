@@ -273,6 +273,14 @@ void usercontrol(void) { // dont need void in parameter
       intake_11.stop();
     }
 
+    if (Controller1.ButtonUp.pressing()) {
+      toggle_mech.spin(reverse);
+    } else if (Controller1.ButtonLeft.pressing()) {
+      toggle_mech.spin(forward); 
+    } else {
+      toggle_mech.stop();
+    }
+
     //Replace this line with chassis.control_tank(); for tank drive 
     //or chassis.control_holonomic(); for holo drive.
     chassis.control_arcade();

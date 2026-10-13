@@ -29,7 +29,7 @@ motor cascade_2 = motor(PORT9, ratio18_1, false);
 motor claw_wrist = motor(PORT20, ratio36_1, false);
 motor claw_intake = motor(PORT13, ratio18_1, false);
 
-motor toggle_mech = motor(PORT14, ratio18_1, false);
+motor toggle_mech = motor(PORT10, ratio18_1, false);
 
 inertial Inertial = inertial(PORT7);
 //Add your devices below, and don't forget to do the same in robot-config.h:
