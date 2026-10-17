@@ -19,7 +19,6 @@ extern motor cascade_2;
 extern motor claw_wrist;
 extern motor claw_intake;
 
-extern motor toggle_mech;
 //Add your devices below, and don't forget to do the same in robot-config.cpp:
 extern inertial Inertial;
 

@@ -240,8 +240,6 @@ void usercontrol(void) { // dont need void in parameter
     intake_11.setVelocity(600,rpm);
     cascade_1.setVelocity(200,rpm);
     cascade_2.setVelocity(200,rpm);
-    toggle_mech.setVelocity(200,rpm);
-
 
     // Cascade control
     if (Controller1.ButtonR1.pressing()) {
@@ -271,14 +269,6 @@ void usercontrol(void) { // dont need void in parameter
       intake_11.spin(forward); 
     } else {
       intake_11.stop();
-    }
-
-    if (Controller1.ButtonUp.pressing()) {
-      toggle_mech.spin(forward);
-    } else if (Controller1.ButtonLeft.pressing()) {
-      toggle_mech.spin(reverse); 
-    } else {
-      toggle_mech.stop();
     }
 
     //Replace this line with chassis.control_tank(); for tank drive 
