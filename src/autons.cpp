@@ -26,8 +26,20 @@ void simple_auto(){
   chassis.drive_distance(5);
   chassis.set_drive_exit_conditions(.5, 500, 2000); // settle_time is minumum amount of time the robot needs to hold its position and the one after is maximum time
   claw_wrist.spinToPosition(90, degrees, true);
-//  cascade_1.spinFor(reverse, 2, seconds, true);
-//  cascade_2.spinFor(reverse, 2, seconds, true);
+  cascade_1.spinFor(180, degrees, true);
+  cascade_2.spinFor(180, degrees, true);
+}
+
+void skills_auto()
+{
+  chassis.set_drive_constants(6, 5, 0, .25, 0);// starti is when to start the i term in PID
+  chassis.drive_distance(5);
+  chassis.set_drive_exit_conditions(.5, 500, 2000); // settle_time is minumum amount of time the robot needs to hold its position and the one after is maximum time
+  claw_wrist.spinToPosition(90, degrees, true);
+  cascade_1.spinFor(180, degrees, false);
+  cascade_2.spinFor(180, degrees, true);
+  cascade_1.spinFor(-180, degrees, false);
+  cascade_2.spinFor(-180, degrees, true);
 }
 
 /**

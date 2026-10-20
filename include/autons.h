@@ -8,6 +8,7 @@ extern Drive chassis;
 void default_constants();
 
 void simple_auto();
+void skills_auto();
 
 void drive_test();
 void turn_test();
