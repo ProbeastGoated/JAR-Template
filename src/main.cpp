@@ -213,13 +213,13 @@ void autonomous(void) {
 void clawMove() {
     double currentPos = claw_wrist.position(degrees);
 
-    const double tolerance = 5.0;
+    const double tolerance = 10.0;
 
-    if (fabs(currentPos - 90.0) <= tolerance) {
+    if (fabs(currentPos - 100.0) <= tolerance) {
         claw_wrist.spinToPosition(0, degrees, false); 
     }
     else if (fabs(currentPos - 0.0) <= tolerance) {
-        claw_wrist.spinToPosition(90, degrees, false);
+        claw_wrist.spinToPosition(100, degrees, false);
     }
 }
 
@@ -238,6 +238,7 @@ void usercontrol(void) { // dont need void in parameter
     Controller1.ButtonB.pressed(clawMove);
     claw_intake.setVelocity(200,rpm);
     intake_11.setVelocity(600,rpm);
+    intake_5_5.setVelocity(200,rpm);
     cascade_1.setVelocity(200,rpm);
     cascade_2.setVelocity(200,rpm);
 
@@ -253,22 +254,18 @@ void usercontrol(void) { // dont need void in parameter
       cascade_2.stop();
     }
 
-    // Claw control
-    // out then in
-    if (Controller1.ButtonDown.pressing()) {
-      claw_intake.spin(forward);
-    } else if (Controller1.ButtonRight.pressing()) {
-      claw_intake.spin(reverse);
-    } else {
-      claw_intake.stop();
-    }
-
     if (Controller1.ButtonL2.pressing()) {
       intake_11.spin(reverse);
+      claw_intake.spin(forward);
+      intake_5_5.spin(forward);
     } else if (Controller1.ButtonL1.pressing()) {
       intake_11.spin(forward); 
+      claw_intake.spin(reverse);
+      intake_5_5.spin(reverse);
     } else {
       intake_11.stop();
+      claw_intake.stop();
+      intake_5_5.stop();
     }
 
     //Replace this line with chassis.control_tank(); for tank drive 

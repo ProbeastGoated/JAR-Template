@@ -22,6 +22,7 @@ motor BackLeft = motor(PORT2, ratio6_1, true);
 motor BackRight = motor(PORT11, ratio6_1, false);
 
 motor intake_11 = motor(PORT3, ratio6_1, false);
+motor intake_5_5 = motor(PORT16, ratio18_1, true);
 
 motor cascade_1 = motor(PORT5, ratio18_1, true);
 motor cascade_2 = motor(PORT9, ratio18_1, false);

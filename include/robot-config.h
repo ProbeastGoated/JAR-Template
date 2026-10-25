@@ -12,6 +12,7 @@ extern motor FrontRight;
 extern motor BackRight;
 
 extern motor intake_11;
+extern motor intake_5_5;
 
 extern motor cascade_1;
 extern motor cascade_2;
