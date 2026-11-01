@@ -223,6 +223,15 @@ void clawMove() {
     }
 }
 
+void clawUp(){
+  claw_wrist.spinToPosition(80, degrees, false);
+}
+void clawDown(){
+  claw_wrist.spinToPosition(110, degrees, false);
+}
+void clawUp_Up(){
+  claw_wrist.spinToPosition(150, degrees, false);
+}
 
 void usercontrol(void) { // dont need void in parameter
   // User control code here, inside the loop
@@ -235,7 +244,11 @@ void usercontrol(void) { // dont need void in parameter
     // Insert user code here. This is where you use the joystick values to
     // update your motors, etc.
     // ........................................................................
+    claw_wrist.setVelocity(20, rpm);
     Controller1.ButtonB.pressed(clawMove);
+    Controller1.ButtonRight.pressed(clawUp);
+    Controller1.ButtonDown.pressed(clawDown);
+    Controller1.ButtonLeft.pressed(clawUp_Up);
     claw_intake.setVelocity(200,rpm);
     intake_11.setVelocity(600,rpm);
     intake_5_5.setVelocity(200,rpm);
@@ -267,7 +280,13 @@ void usercontrol(void) { // dont need void in parameter
       claw_intake.stop();
       intake_5_5.stop();
     }
-
+    /*double pos = claw_wrist.position(degrees);
+    if (Controller1.ButtonRight.pressing()) {
+      claw_wrist.spinFor(pos + 10, degrees, false);
+    } else if (Controller1.ButtonDown.pressing()) {
+      claw_wrist.spinFor(pos - 10, degrees, false);
+    }
+*/
     //Replace this line with chassis.control_tank(); for tank drive 
     //or chassis.control_holonomic(); for holo drive.
     chassis.control_arcade();
