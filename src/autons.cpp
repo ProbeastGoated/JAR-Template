@@ -22,33 +22,85 @@ void default_constants(){
 }
 
 void simple_auto(){
+  chassis.set_drive_constants(6, 5, 0, 1, 0);
   claw_intake.setVelocity(100,rpm);
   claw_wrist.setVelocity(20,rpm);
-  chassis.drive_distance(25);
   claw_wrist.spinToPosition(90, degrees, false);
-  wait(300, msec);
+  chassis.drive_distance(25);
   claw_intake.spinFor(180, degrees, true);
-  chassis.turn_to_angle(50); //don't know yet
+  /*chassis.turn_to_angle(50); //don't know yet
   claw_wrist.spinToPosition(45, degrees, false);
   chassis.drive_distance(10); //don't know yet
   chassis.turn_to_angle(0); //don't know yet
   claw_intake.spinFor(-180, degrees, true);
   chassis.drive_distance(-10); //don't know yet
   chassis.turn_to_angle(0); //don't know yet
-  
+*/ 
 
 }
 
 void skills_auto()
 {
-  chassis.set_drive_constants(6, 5, 0, .25, 0);// starti is when to start the i term in PID
+  claw_wrist.setPosition(0,degrees);
+  claw_intake.setVelocity(200,rpm);
+  claw_wrist.setVelocity(20,rpm);
+  cascade_1.setVelocity(200, rpm);
+  cascade_2.setVelocity(200, rpm);
+  chassis.set_drive_constants(8, 1.5, 0, 10, 0);
+  chassis.set_drive_exit_conditions(1, 6, 2000);
+  claw_wrist.spinToPosition(110, degrees, false);
+  chassis.drive_distance(50);
+  claw_intake.spinFor(180, degrees, true);
+  claw_wrist.spinToPosition(150, degrees, false);
+  wait(.5, seconds);
+  chassis.drive_distance(-10);
+  chassis.turn_to_angle(180, 8);
+  claw_wrist.spinToPosition(60, degrees, false);
+  chassis.drive_distance(30);
+  chassis.turn_to_angle(170, 8);
+  chassis.drive_distance(20);
+  claw_intake.spinFor(forward, 720, degrees, false);
+  wait(2, seconds);
+  chassis.set_drive_constants(3, 1.5, 0, 10, 0);
+  chassis.drive_distance(-3);
+  chassis.turn_to_angle(180, 3);
+  chassis.drive_distance(-20);
+  chassis.turn_to_angle(38, 6);
+  claw_wrist.spinToPosition(110, degrees, false);
+  cascade_1.setTimeout(2,seconds);
+  cascade_2.setTimeout(2,seconds);
+  cascade_1.spinFor(forward,2000, degrees, false);
+  cascade_2.spinFor(forward,2000, degrees, true);
+  chassis.set_drive_constants(5, 1.5, 0, 10, 0);
+  chassis.drive_distance(50);
+  wait(3,seconds);
+  claw_intake.spinFor(360, degrees, true);
+  /*chassis.drive_distance(-60);
+  chassis.turn_to_angle(-38, 6);
+  */
+  /*chassis.drive_distance(20);
+  chassis.turn_to_angle(180, 3);
+  chassis.drive_distance(3);
+  chassis.set_drive_constants(3, 1.5, 0, 10, 0);
+  */
+  
+
+  /*chassis.set_drive_constants(2, 1.5, 0, 10, 0);
+  chassis.drive_distance(-40);
+  chassis.set_drive_constants(5, 2, 0, 5, 0);
+  chassis.set_drive_exit_conditions(1, 6, 3500);
+  chassis.turn_to_angle(10, 5);
   chassis.drive_distance(5);
-  chassis.set_drive_exit_conditions(.5, 500, 2000); // settle_time is minumum amount of time the robot needs to hold its position and the one after is maximum time
-  claw_wrist.spinToPosition(90, degrees, true);
-  cascade_1.spinFor(180, degrees, false);
+  chassis.turn_to_angle(30, 5);
+  claw_wrist.spinToPosition(110, degrees, false);
+  cascade_1.spinFor(forward,2000, degrees, false);
+  cascade_2.spinFor(forward,2000, degrees, false);
+  chassis.drive_distance(60);
+*/
+  /*cascade_1.spinFor(180, degrees, false);
   cascade_2.spinFor(180, degrees, true);
   cascade_1.spinFor(-180, degrees, false);
-  cascade_2.spinFor(-180, degrees, true);
+  cascade_2.spinFor(-180, degrees, true);*/
 }
 
 /**

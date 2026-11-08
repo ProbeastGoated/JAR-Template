@@ -105,7 +105,7 @@ PORT8,
 
 );
 
-int current_auton_selection = 0;
+int current_auton_selection = 2;
 bool auto_started = false;
 
 /**

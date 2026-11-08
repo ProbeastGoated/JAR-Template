@@ -27,7 +27,7 @@ motor intake_5_5 = motor(PORT16, ratio18_1, true);
 motor cascade_1 = motor(PORT5, ratio18_1, true);
 motor cascade_2 = motor(PORT9, ratio18_1, false);
 
-motor claw_wrist = motor(PORT20, ratio36_1, false);
+motor claw_wrist = motor(PORT18, ratio36_1, false);
 motor claw_intake = motor(PORT13, ratio18_1, false);
 
 motor toggle_mech = motor(PORT10, ratio18_1, false);
