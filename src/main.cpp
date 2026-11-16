@@ -105,7 +105,7 @@ PORT8,
 
 );
 
-int current_auton_selection = 2;
+int current_auton_selection = 0;
 bool auto_started = false;
 
 /**
@@ -175,7 +175,7 @@ void autonomous(void) {
   auto_started = true;
   switch(current_auton_selection){ 
     case 0:
-      simple_auto();
+      Left_15_second_auton();
       break;
     case 1:         
       //drive_test();

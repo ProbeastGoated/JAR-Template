@@ -22,6 +22,7 @@ extern motor claw_intake;
 
 //Add your devices below, and don't forget to do the same in robot-config.cpp:
 extern inertial Inertial;
+extern rotation Rotation;
 
 
 void  vexcodeInit( void );

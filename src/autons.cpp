@@ -21,13 +21,9 @@ void default_constants(){
   chassis.set_swing_exit_conditions(1, 300, 3000);
 }
 
-void simple_auto(){
-  chassis.set_drive_constants(6, 5, 0, 1, 0);
-  claw_intake.setVelocity(100,rpm);
-  claw_wrist.setVelocity(20,rpm);
-  claw_wrist.spinToPosition(90, degrees, false);
-  chassis.drive_distance(25);
-  claw_intake.spinFor(180, degrees, true);
+void Left_15_second_auton(){
+  chassis.set_drive_constants(10, 2, 0, 13, 0);
+  chassis.drive_distance(24);
   /*chassis.turn_to_angle(50); //don't know yet
   claw_wrist.spinToPosition(45, degrees, false);
   chassis.drive_distance(10); //don't know yet

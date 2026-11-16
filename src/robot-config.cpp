@@ -33,6 +33,7 @@ motor claw_intake = motor(PORT13, ratio18_1, false);
 motor toggle_mech = motor(PORT10, ratio18_1, false);
 
 inertial Inertial = inertial(PORT7);
+rotation Rotation = rotation(PORT8);
 //Add your devices below, and don't forget to do the same in robot-config.h:
 
 
