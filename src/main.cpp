@@ -210,28 +210,7 @@ void autonomous(void) {
 /*                                                                           */
 /*  You must modify the code to add your own robot specific commands here.   */
 /*---------------------------------------------------------------------------*/
-void clawMove() {
-    double currentPos = claw_wrist.position(degrees);
 
-    const double tolerance = 10.0;
-
-    if (fabs(currentPos - 100.0) <= tolerance) {
-        claw_wrist.spinToPosition(0, degrees, false); 
-    }
-    else if (fabs(currentPos - 0.0) <= tolerance) {
-        claw_wrist.spinToPosition(100, degrees, false);
-    }
-}
-
-void clawUp(){
-  claw_wrist.spinToPosition(80, degrees, false);
-}
-void clawDown(){
-  claw_wrist.spinToPosition(110, degrees, false);
-}
-void clawUp_Up(){
-  claw_wrist.spinToPosition(150, degrees, false);
-}
 
 void usercontrol(void) { // dont need void in parameter
   // User control code here, inside the loop
@@ -244,16 +223,8 @@ void usercontrol(void) { // dont need void in parameter
     // Insert user code here. This is where you use the joystick values to
     // update your motors, etc.
     // ........................................................................
-    claw_wrist.setVelocity(20, rpm);
-    Controller1.ButtonB.pressed(clawMove);
-    Controller1.ButtonRight.pressed(clawUp);
-    Controller1.ButtonDown.pressed(clawDown);
-    Controller1.ButtonLeft.pressed(clawUp_Up);
-    claw_intake.setVelocity(200,rpm);
-    intake_11.setVelocity(600,rpm);
-    intake_5_5.setVelocity(200,rpm);
-    cascade_1.setVelocity(200,rpm);
-    cascade_2.setVelocity(200,rpm);
+    cascade_1.setVelocity(600,rpm);
+    cascade_2.setVelocity(600,rpm);
 
     // Cascade control
     if (Controller1.ButtonR1.pressing()) {
@@ -267,26 +238,19 @@ void usercontrol(void) { // dont need void in parameter
       cascade_2.stop();
     }
 
-    if (Controller1.ButtonL2.pressing()) {
-      intake_11.spin(reverse);
-      claw_intake.spin(forward);
-      intake_5_5.spin(forward);
-    } else if (Controller1.ButtonL1.pressing()) {
-      intake_11.spin(forward); 
-      claw_intake.spin(reverse);
-      intake_5_5.spin(reverse);
-    } else {
-      intake_11.stop();
-      claw_intake.stop();
-      intake_5_5.stop();
-    }
-    /*double pos = claw_wrist.position(degrees);
-    if (Controller1.ButtonRight.pressing()) {
-      claw_wrist.spinFor(pos + 10, degrees, false);
+    if (Controller1.ButtonL1.pressing()) {
+      claw_intake.spin(forward, 200, vex::velocityUnits::rpm);
     } else if (Controller1.ButtonDown.pressing()) {
-      claw_wrist.spinFor(pos - 10, degrees, false);
+      claw_intake.spin(forward, 100, vex::velocityUnits::rpm);
     }
-*/
+    else if (Controller1.ButtonL2.pressing())
+    {
+      claw_intake.spin(reverse);
+    }
+    else
+    {
+      claw_intake.stop();
+    }
     //Replace this line with chassis.control_tank(); for tank drive 
     //or chassis.control_holonomic(); for holo drive.
     chassis.control_arcade();
