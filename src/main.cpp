@@ -239,8 +239,6 @@ void usercontrol(void) { // dont need void in parameter
     }
 
     if (Controller1.ButtonL1.pressing()) {
-      claw_intake.spin(forward, 200, vex::velocityUnits::rpm);
-    } else if (Controller1.ButtonDown.pressing()) {
       claw_intake.spin(forward, 100, vex::velocityUnits::rpm);
     }
     else if (Controller1.ButtonL2.pressing())

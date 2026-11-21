@@ -28,7 +28,7 @@ motor cascade_1 = motor(PORT9, ratio18_1, true);
 motor cascade_2 = motor(PORT18, ratio18_1, false);
 
 motor claw_intake = motor(PORT2, ratio18_1, false);
-motor claw_wrist = motor(PORT20, ratio18_1, false);
+motor claw_wrist = motor(PORT20, ratio36_1, false);
 
 inertial Inertial = inertial(PORT7);
 rotation Rotation = rotation(PORT8);
