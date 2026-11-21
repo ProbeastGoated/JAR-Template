@@ -223,8 +223,8 @@ void usercontrol(void) { // dont need void in parameter
     // Insert user code here. This is where you use the joystick values to
     // update your motors, etc.
     // ........................................................................
-    cascade_1.setVelocity(600,rpm);
-    cascade_2.setVelocity(600,rpm);
+    cascade_1.setVelocity(200,rpm);
+    cascade_2.setVelocity(200,rpm);
 
     // Cascade control
     if (Controller1.ButtonR1.pressing()) {
