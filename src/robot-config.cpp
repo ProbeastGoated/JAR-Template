@@ -27,11 +27,11 @@ motor intake_5_5 = motor(PORT16, ratio18_1, true);
 motor cascade_1 = motor(PORT9, ratio18_1, true);
 motor cascade_2 = motor(PORT18, ratio18_1, false);
 
-motor claw_intake = motor(PORT2, ratio36_1, false);
+motor claw_intake = motor(PORT13, ratio18_1, false);
 motor claw_wrist = motor(PORT20, ratio18_1, false);
 
-inertial Inertial = inertial(PORT7);
-rotation Rotation = rotation(PORT8);
+inertial Inertial = inertial(PORT8);
+rotation Rotation = rotation(PORT7);
 //Add your devices below, and don't forget to do the same in robot-config.h:
 
 

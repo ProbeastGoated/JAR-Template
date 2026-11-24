@@ -50,7 +50,7 @@ motor_group(FrontLeft, BackLeft),
 motor_group(FrontRight, BackRight),
 
 //Specify the PORT NUMBER of your inertial sensor, in PORT format (i.e. "PORT1", not simply "1"):
-PORT7,
+PORT8,
 
 //Input your wheel diameter. (4" omnis are actually closer to 4.125"):
 2.75,
@@ -175,7 +175,7 @@ void autonomous(void) {
   auto_started = true;
   switch(current_auton_selection){ 
     case 0:
-      Left_15_second_auton();
+      Right_15_second_auton();
       break;
     case 1:         
       //drive_test();
@@ -211,6 +211,19 @@ void autonomous(void) {
 /*  You must modify the code to add your own robot specific commands here.   */
 /*---------------------------------------------------------------------------*/
 
+void claw_intake_200(){
+  if (claw_intake.power() > 0) {
+    claw_intake.stop();
+  } else {
+    claw_intake.spin(forward, 200, vex::velocityUnits::rpm);
+  }
+}
+void claw_intake_100(){
+  claw_intake.spin(forward, 100, vex::velocityUnits::rpm);
+}
+void claw_outtake(){
+  claw_intake.spin(reverse);
+}
 
 void usercontrol(void) { // dont need void in parameter
   // User control code here, inside the loop
@@ -225,12 +238,20 @@ void usercontrol(void) { // dont need void in parameter
     // ........................................................................
     cascade_1.setVelocity(200,rpm);
     cascade_2.setVelocity(200,rpm);
+    cascade_1.setStopping(hold);
+    cascade_2.setStopping(hold);
+    /*
+    Controller1.ButtonL1.pressed(claw_intake_200);
+    Controller1.ButtonDown.pressed(claw_intake_100);
+    Controller1.ButtonL2.pressed(claw_outtake);
+    */
+  
 
     // Cascade control
-    if (Controller1.ButtonR1.pressing()) {
+    if (Controller1.ButtonR2.pressing()) {
       cascade_1.spin(forward);
       cascade_2.spin(forward);
-    } else if (Controller1.ButtonR2.pressing()) {
+    } else if (Controller1.ButtonR1.pressing()) {
       cascade_1.spin(reverse);
       cascade_2.spin(reverse);
     } else {
@@ -239,16 +260,17 @@ void usercontrol(void) { // dont need void in parameter
     }
 
     if (Controller1.ButtonL1.pressing()) {
-      claw_intake.spin(forward, 100, vex::velocityUnits::rpm);
-    }
-    else if (Controller1.ButtonL2.pressing())
-    {
+      claw_intake.spin(forward, 200, rpm);
+    } else if (Controller1.ButtonL2.pressing()) {
       claw_intake.spin(reverse);
     }
-    else
-    {
+     else if (Controller1.ButtonDown.pressing()) {
+      claw_intake.spin(forward, 100, rpm);
+    } else {
       claw_intake.stop();
     }
+    
+
     //Replace this line with chassis.control_tank(); for tank drive 
     //or chassis.control_holonomic(); for holo drive.
     chassis.control_arcade();

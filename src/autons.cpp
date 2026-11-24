@@ -21,9 +21,31 @@ void default_constants(){
   chassis.set_swing_exit_conditions(1, 300, 3000);
 }
 
-void Left_15_second_auton(){
+void Right_15_second_auton(){
+  cascade_1.setVelocity(100,rpm);
+  cascade_2.setVelocity(100,rpm);
   chassis.set_drive_constants(10, 2, 0, 13, 0);
-  chassis.drive_distance(24);
+  chassis.set_turn_constants(8, 2, 0, 13, 0);
+  chassis.set_turn_exit_conditions(1,300,500);
+  chassis.set_drive_exit_conditions(1,1000,4000);
+  cascade_1.spinFor(reverse, 250, degrees, false);
+  cascade_2.spinFor(reverse, 250, degrees, false);
+  chassis.drive_distance(26.5);
+  wait(1000,msec);
+  cascade_1.spinFor(forward, 230, degrees, false);
+  cascade_2.spinFor(forward, 230, degrees, false);
+  wait(500,msec);
+  claw_intake.spinFor(reverse, 90, degrees, false);
+  cascade_1.spinFor(reverse, 200, degrees, false);
+  cascade_2.spinFor(reverse, 200, degrees, false);
+  chassis.turn_to_angle(-25);
+  claw_intake.spinFor(forward, 90, degrees, false);
+  chassis.drive_distance(-28);
+  //chassis.turn_to_angle(-90);
+  /*cascade_1.spinFor(reverse, 360, degrees, false);
+  cascade_2.spinFor(reverse, 360, degrees, false);
+  claw_intake.spinFor(reverse, 180, degrees, false);
+  wait(100,msec);
   /*chassis.turn_to_angle(50); //don't know yet
   claw_wrist.spinToPosition(45, degrees, false);
   chassis.drive_distance(10); //don't know yet
